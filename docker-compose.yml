@@ -1,6 +1,7 @@
 services:
   weather_gateway:
     build: .
+    network_mode: "host"
     environment:
       WPG_DB_HOST: $WPG_DB_HOST
       WPG_DB_DB: $WPG_DB_DB

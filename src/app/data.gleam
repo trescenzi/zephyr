@@ -2,6 +2,7 @@ import app/middleware
 import gleam/dict
 import gleam/dynamic
 import gleam/float
+import gleam/int
 import gleam/http.{Post}
 import gleam/io
 import gleam/list
@@ -30,7 +31,13 @@ pub type Condition {
 }
 
 fn to_float(str: String) -> Float {
-  result.unwrap(float.parse(str), 0.0)
+    float.parse(str)
+  |> result.try_recover(fn(_) {
+    Ok(int.parse(str)
+    |> result.unwrap(0)
+    |> int.to_float)
+  })
+  |> result.unwrap(0.0)
 }
 
 fn parse_pressure(pressure: String) -> Float {
