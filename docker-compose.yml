@@ -1,0 +1,10 @@
+services:
+  weather_gateway:
+    build: .
+    environment:
+      WPG_DB_HOST: $WPG_DB_HOST
+      WPG_DB_DB: $WPG_DB_DB
+      WPG_DB_USER: $WPG_DB_USER
+      WPG_DB_PASS: $WPG_DB_PASS
+    ports:
+      - "2469:2469"
