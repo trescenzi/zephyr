@@ -1,6 +1,6 @@
 import app/web
-import gleam/erlang/process
 import gleam/io
+import gleam/erlang/process
 
 pub fn main() {
   io.println("Hello from weather_gateway!")
